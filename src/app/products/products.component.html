@@ -1,0 +1,23 @@
+<div class="container">
+
+    <div *ngIf="load">
+        <div class="loader"></div>
+    </div>
+    <div *ngIf="!load">
+        <div>
+            <div class="row" >
+                <div class="col-sm-3" (click)="clickProduct(product)" *ngFor="let product of productList;let i = index">
+                    <img [src]="product.image" class="img-responsive products"/>
+                    <span>{{product.description}}</span>
+                </div>
+            </div>    
+        </div>
+        <div *ngIf="productList.length == 0"> 
+            <span>No products registered, please add products!</span>
+        </div>
+    </div>
+
+  
+
+   
+</div>

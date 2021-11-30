@@ -1,0 +1,23 @@
+<div class="container">
+
+    <div *ngIf="load">
+        <div class="loader"></div>
+    </div>
+    <div *ngIf="!load">
+      <div>
+        <h1>Orders</h1>
+        <div class="row" class="col-sm-12" *ngFor="let order of orders;let i = index">
+              
+                Product Name : <span>{{order.productName}}</span><br>
+                Price : <span>{{order.price}}</span> Rs.<br>
+                Quantity : <span>{{order.quantity}}</span><br>
+                Order Status : <b>{{order.status}}</b><br><br>
+           
+        </div>    
+      </div>
+
+      <div *ngIf="orders.length == 0"> 
+          <span>No products ordered!</span>
+      </div>
+    </div>
+</div>

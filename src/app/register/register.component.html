@@ -1,0 +1,86 @@
+<div class="container">
+<div class="col-sm-12">
+    <div [hidden]="submitted">
+	<div class="row">
+		<div class="col-md">
+			<h3>{{formName}}</h3>
+		</div>
+    <div class="col-md" *ngIf="hotelName != ''">
+			<span>for <b>{{hotelName}}</b></span>
+		</div>	
+	</div>  
+      <form (ngSubmit)="onSubmit()" #productBookingForm="ngForm">
+        
+  
+        <div class="form-group">
+          <label for="productId">Product ID</label>
+          <input type="text" class="form-control" id="productId"
+                 [(ngModel)]="model.productId" name="productId">
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input type="text" class="form-control" id="description"
+                 [(ngModel)]="model.description" name="description">
+        </div>
+
+        <div class="form-group">
+          <label for="productName">Product Name</label>
+          <input type="text" class="form-control" id="productName"
+                 [(ngModel)]="model.productName" name="productName">
+        </div>
+		
+		    <div class="form-group">
+          <label for="price">Price</label>
+          <input type="number" class="form-control" id="price"
+                 [(ngModel)]="model.price" name="price">
+        </div>
+
+        <div class="form-group">
+          <label for="quantity">Quantity</label>
+          <input type="number" class="form-control" id="quantity"
+                 [(ngModel)]="model.quantity" name="quantity">
+        </div>
+
+        
+
+        
+        <button type="submit" class="btn btn-success" [disabled]="!productBookingForm.form.valid">Submit</button>
+        
+      </form>
+    </div>
+</div>
+    <div [hidden]="!submitted">
+        <h2>You submitted the following:</h2>
+		<div class="container">
+        <div class="row">
+          <label class="col-xs-3"><b>Product Name</b></label>
+          <div class="col-xs-9">{{ model.productName }}</div>
+        </div>
+        <div class="row">
+          <label class="col-xs-3"><b>Description</b></label>
+          <div class="col-xs-9">{{ model.description }}</div>
+        </div>
+        <div class="row">
+          <label class="col-xs-3"><b>Duration Days</b></label>
+          <div class="col-xs-9">{{ model.price }}</div>
+        </div>
+		 <div class="row">
+          <label class="col-xs-3"><b>Duration Nights</b></label>
+          <div class="col-xs-9">{{ model.quantity }}</div>
+        </div>
+		 
+        <button class="btn btn-primary" [routerLink]="['/hotel-list']">Go Hotel List</button>
+      </div>
+
+      <div>
+        <span>{{message}}</span>
+      </div>
+      <div class="form-group">
+        <label for="quantity">Upload Image</label>
+        <input #imageInput type="file" class="form-control" id="file"
+        (change)="onFileChanged(imageInput)" name="file">
+
+        <input type="button" (click)="onUpload()" value="upload">
+      </div>
+	  </div>
+  </div>

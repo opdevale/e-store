@@ -1,0 +1,20 @@
+<div class="container">
+   <div>
+    <a routerLink="/products" class="btn-back">Back</a>
+   </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <img [src]="product.image" class="img-responsive product-image"/>
+        </div>
+        <div class="col-sm-6">
+            <h2>{{product.productName}} Details</h2>
+            <div><span>Serial ID: </span>{{product.productId}}</div>
+            <div><span>Price: </span>{{product.price}}</div>
+            <div><span>Model: </span>{{product.productName}}</div>
+            <div><span>Description: </span>{{product.description}}</div>
+            <div><span>Year: </span>{{product.year}}</div>
+            <a class="btn btn-first" href="#">Buy Now</a>
+            <a class="btn btn-second" href="#">Add to Cart</a>
+        </div>
+    </div>
+</div>
