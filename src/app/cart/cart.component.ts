@@ -30,11 +30,13 @@ export class CartComponent implements OnInit, OnDestroy {
 
   }
   ngOnDestroy(): void {
-    //localStorage.setItem('cartList', JSON.stringify([]));
+    
   }
 
   ngOnInit(): void {
-   
+    this.cartList.forEach(object =>{
+      this.totalPrice = this.totalPrice + object.product.price;
+    });
   }
 
   removeProductFromCart(product: any){

@@ -1,5 +1,5 @@
 <div class="container">
-    <a class="btn btn-primary" (click)="removeProductFromCart(product)">Place Order</a>
+    
     <div class="cart">
         <span class="pagetitle">My Cart ({{cartList.length}})</span>
         
@@ -25,7 +25,17 @@
         </div>
         
         <div *ngIf="cartList.length == 0"> 
-            <span>Add products in cart</span>
+            <div class="row cart-item" >
+                <div class="col-sm-12">
+                    <div>
+                        <img src="../assets/empty_cart.png" class="img-responsive products"/>
+                    </div>
+                    <p>No Items in Cart</p>
+                </div>
+            </div>
         </div>
+    </div>
+    <div>
+        <a class="btn btn-primary" (click)="removeProductFromCart(product)">Place Order</a>
     </div>
 </div>
