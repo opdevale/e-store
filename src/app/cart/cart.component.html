@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="cart">
+        <span class="pagetitle">My Cart ({{cartList.length}})</span>
+        
+        <div>
+            <div class="row" >
+                <div class="col-sm-3" *ngFor="let product of cartList;let i = index">
+                    <img [src]="product.image" class="img-responsive products"/>
+                    <span>{{product.description}}</span>
+                </div>
+            </div>    
+        </div>
+        <div *ngIf="cartList.length == 0"> 
+            <span>Add products in cart</span>
+        </div>
+    </div>
+</div>

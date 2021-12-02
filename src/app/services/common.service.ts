@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
+import { Product } from '../model/product';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,8 @@ export class CommonService {
   constructor(private http: HttpClient) { }
   
   apiURL: string = "http://localhost:8080";
+
+  cartList: Product[] = [];
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -26,6 +29,14 @@ export class CommonService {
 		  return this.apiURL;
   }
 	
+
+  addProductsInCart(product: Product){
+    this.cartList.push(product);
+  }
+
+  getCartList(){
+    return this.cartList;
+  }
 	
   // Error handling 
   handleError(error: any) {

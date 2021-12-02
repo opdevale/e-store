@@ -10,12 +10,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { RegisterProductComponent } from './register/register.component';
 import { FormsModule } from '@angular/forms';
 import { OrderComponent } from './order/order.component';
+import { CartComponent } from './cart/cart.component';
 
 const appRoutes: Routes = [
   { path: 'products', component: ProductsComponent},
   { path: 'product-detail', component: ProductDetailComponent, data : {product : {}} },
   { path: 'register-product', component: RegisterProductComponent},
-  { path: 'orders', component: OrderComponent}
+  { path: 'orders', component: OrderComponent},
+  { path: 'cart', component: CartComponent, data : {product : {}}}
+  
   
 ];
 
@@ -25,7 +28,8 @@ const appRoutes: Routes = [
     ProductsComponent,
     ProductDetailComponent,
     RegisterProductComponent,
-    OrderComponent
+    OrderComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

@@ -24,9 +24,10 @@ export class ProductDetailComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
 
-    
+  addToCart(){
+    this.router.navigate(['/cart'], { state: { productObj: this.product } });
   }
 
 }
