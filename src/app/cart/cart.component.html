@@ -1,15 +1,29 @@
 <div class="container">
+    <a class="btn btn-primary" (click)="removeProductFromCart(product)">Place Order</a>
     <div class="cart">
         <span class="pagetitle">My Cart ({{cartList.length}})</span>
         
-        <div>
-            <div class="row" >
-                <div class="col-sm-3" *ngFor="let product of cartList;let i = index">
-                    <img [src]="product.image" class="img-responsive products"/>
-                    <span>{{product.description}}</span>
+        <div *ngIf="cartList.length > 0">
+            <div class="row cart-item" *ngFor="let product of cartList;let i = index">{{product.prod}}
+                <div class="col-sm-3" >
+                    <img [src]="product.product.image" class="img-responsive products"/>
+                   
                 </div>
-            </div>    
+                <div class="col-sm-3">
+                    <p><b>{{product.product.productName}}</b></p>
+                    <p>{{product.product.description}}</p>
+                    <p><b>Price</b> : Rs. {{product.product.price}}</p>
+                </div>
+                <div class="col-sm-3" >
+                    <a class="btn btn-primary" (click)="removeProductFromCart(product)">Remove</a>
+                </div>
+                <div class="col-sm-3" *ngIf="i==0">
+                    <p><b>Total Amount</b> : Rs. {{totalPrice}}</p>
+                </div>
+            </div> 
+               
         </div>
+        
         <div *ngIf="cartList.length == 0"> 
             <span>Add products in cart</span>
         </div>

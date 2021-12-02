@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../model/product';
 import { CommonService } from '../services/common.service';
@@ -8,10 +8,12 @@ import { CommonService } from '../services/common.service';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent implements OnInit {
+export class CartComponent implements OnInit, OnDestroy {
 
   product: any;
-  cartList: Product[] = [];
+  cartList: any[] = [];
+  totalPrice: number = 0;
+
   constructor(public activateRoute: ActivatedRoute, public router: Router, public commonService: CommonService) { 
 
     this.product = localStorage.getItem('cartList');
@@ -20,21 +22,31 @@ export class CartComponent implements OnInit {
 
     if (nav.extras && nav.extras.state && nav.extras.state.productObj) {
       this.product = nav.extras.state.productObj as Product;
-      this.cartList.push(this.product);
+      this.cartList.push({'id':this.product.productId, 'product': this.product});
       localStorage.setItem('cartList', JSON.stringify(this.cartList));
       //this.commonService.addProductsInCart(this.product);
     }
     
 
   }
-
-  ngOnInit(): void {
-    
-    this.loadCartList();
+  ngOnDestroy(): void {
+    //localStorage.setItem('cartList', JSON.stringify([]));
   }
 
-  loadCartList(){
-    
+  ngOnInit(): void {
+   
+  }
+
+  removeProductFromCart(product: any){
+    var carts : any[] = [];
+    this.cartList.forEach(object =>{
+      if(object.id != product.id){
+        carts.push(object);
+      }
+    });
+
+    this.cartList = carts;
+    localStorage.setItem('cartList', JSON.stringify(this.cartList));
   }
 
 }
