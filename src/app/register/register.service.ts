@@ -49,7 +49,7 @@ export class RegisterProductService {
    * Submit Product details to database
    */
   addProduct(product: Product): Observable<Response>{
-    
+       
     return this.http.post<Response>(this.apiURL + '/product', product, this.httpOptions).pipe(
         catchError(this.handleError)
     );

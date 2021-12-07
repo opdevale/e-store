@@ -8,6 +8,9 @@
 .header{
     height: 30vh;
 }
+.header-collapse-in{
+    height: 65vh;
+}
 
 .footer{
    
@@ -18,7 +21,7 @@
     color: darkslateblue;
 }
 .navbar-sub{
-    box-shadow: 0 5px 5px darkorange;
+    /*box-shadow: 0 5px 5px darkorange;*/
 
 }
 .logo{
@@ -60,6 +63,13 @@
     padding: 20px 20px;
     border-radius: 2px;
 }
+
+.emptycart{
+    height: 450px;
+    text-align: center;
+    padding: 20px 20px;
+    border-radius: 2px;
+}
 .product-image{
     height: 230px;
     padding: 10px 10px;
@@ -98,3 +108,6 @@
     100% { transform: rotate(360deg); }
   }
 
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
